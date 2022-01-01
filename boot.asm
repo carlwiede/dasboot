@@ -39,6 +39,25 @@ movecursor:
     pop bp
     ret
 
-
+print:
+    push bp
+    mov bp, sp
+    pusha
+    mov si, [bp+4]  ; grab the pointer to the data
+    mov bh, 0x00    ; page number, 0 again
+    mov bl, 0x00    ; foreground color, irrelevant in text mode
+    mov ah, 0x0E    ; print character to TTY
+.char:
+    mov al, [si]    ; get the current char from pointer position
+    add si, 1       ; keep incrementing si until we see a null char
+    or al, 0
+    je .return      ; return if null char is reached
+    int 0x10        ; print character if we're not done
+    jmp .char
+.return:
+    popa
+    mov sp, bp
+    pop bp
+    ret
 
 msg:    db "Assembly sure is cool innit", 0
