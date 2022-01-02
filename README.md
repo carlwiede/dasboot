@@ -1,12 +1,12 @@
 # dasboot
 ##### A Tiny x86 Bootloader
 
-To compile the code, type
+To compile the code to binary, type
 ```
 nasm -f bin boot.asm -o boot.com
 ```
 
-To emulate the boot loader, type
+To emulate the bootloader, type
 ```
 bochs -f bochsrc.txt
 ```
