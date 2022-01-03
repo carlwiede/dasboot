@@ -1,8 +1,8 @@
 bits 16         ; 16-bit real mode
 
-mov ax, 0x7C0
+mov ax, 0x07C0
 mov ds, ax      ; load data segment
-mov ax, 0x7E0
+mov ax, 0x07E0
 mov ss, ax      ; load stack segment with (0x07C00 + 512B)/0x10 = 07E0
 mov sp, 0x2000  ; set sp = 0x2000 for an 8k stack
 
@@ -76,4 +76,4 @@ print:
 msg:    db "Assembly sure is cool innit", 0
 
 times 510-($-$$) db 0
-dw 0xAA55
+dw 0xAA55               ; boot loader magic
