@@ -1,14 +1,16 @@
 # dasboot
 ##### A Tiny x86 Bootloader
 
+Requires nasm and qemu.
+
 To compile the code to binary, type
 ```
-nasm -f bin boot.asm -o boot.com
+nasm -f bin boot.asm -o boot.bin
 ```
 
 To emulate the bootloader, type
 ```
-bochs -f bochsrc.txt
+qemu-system-x86_64 -fda boot.bin
 ```
 
 Booty, booty, booty, booty, rockin' everywhere.
